@@ -1,0 +1,71 @@
+service: ffl
+
+frameworkVersion: '2 || 3'
+variablesResolutionMode: 20210326
+
+custom:
+  pymemcacheLayerArn: ${ssm:/pymemcache_layer}
+  securityGroupIds: ${ssm:/lambda_security_group}
+  subnetIds: ${ssm:/private_subnets}
+  endpoint: ${ssm:/cache_endpoint}
+  port: ${ssm:/cache_port}
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+
+package:
+  individually: true
+  exclude: "*"
+
+functions:
+  post:
+    handler: set.ffl    	
+    
+    events:
+      - schedule: rate(10 minutes)
+    
+    timeout: 90
+    
+    layers: 
+      - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:46
+      - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-requests:27
+      - ${self:custom.pymemcacheLayerArn} 
+    
+    vpc:
+      securityGroupIds:
+        - ${self:custom.securityGroupIds}
+      subnetIds: ${self:custom.subnetIds}
+    
+    environment:
+      endpoint: ${self:custom.endpoint}
+      port: ${self:custom.port}
+
+    package:
+      include:
+        - 'set.py'
+  
+  poll:
+    handler: get.ffl
+    
+    events:
+      - http: 
+          path: /
+          method: get
+    
+    layers: 
+      - ${self:custom.pymemcacheLayerArn}
+    
+    vpc:
+      securityGroupIds:
+        - ${self:custom.securityGroupIds}
+      subnetIds: ${self:custom.subnetIds}
+    
+    environment:
+      endpoint: ${self:custom.endpoint}
+      port: ${self:custom.port}
+    
+    package:
+      include:
+        - 'get.py'
