@@ -5,6 +5,14 @@ terraform {
       version = "~> 3.0"
     }
   }
+
+  backend "s3" {
+    encrypt        = true
+    bucket         = "tf-remote-bucket-gonkers"
+    dynamodb_table = "tf-lock-table"
+    region         = "us-east-1"
+    key            = "terraform.tfstate"
+  }
 }
 
 provider "aws" {
