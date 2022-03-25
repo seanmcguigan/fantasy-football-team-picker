@@ -51,6 +51,16 @@ jobs:
       run:
         working-directory: 'ffl'
     steps:
+      - name: "Setup - Checkout"
+        uses: actions/checkout@v2.1.0
+
+      - name: "Setup - Build AWS Credentials"
+        run: |
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+      
       - name: serverless deploy
         uses: serverless/github-action@v3
         with:
