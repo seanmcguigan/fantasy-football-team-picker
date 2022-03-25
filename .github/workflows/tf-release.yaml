@@ -43,9 +43,11 @@ jobs:
       - name: "Run - Terraform Apply"
         id: apply
         run: terraform apply -auto-approve
+        
+      - name: "cd ffl"
+        run: cd ffl
 
       - name: serverless deploy
-        run: cd ./ffl
         uses: serverless/github-action@master
         with:
           args: deploy
