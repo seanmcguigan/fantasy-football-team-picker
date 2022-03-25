@@ -41,5 +41,14 @@ jobs:
         run: terraform init -input=false
 
       - name: "Run - Terraform Apply"
-        id: plan
+        id: apply
         run: terraform apply -auto-approve
+
+      - name: serverless deploy
+        run: cd ./ffl
+        uses: serverless/github-action@master
+        with:
+          args: deploy
+        # env:
+        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
