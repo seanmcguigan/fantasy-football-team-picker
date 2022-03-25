@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create S3 Bucket
-aws s3 mb "s3://tf-remote-bucket-gonkers" --region "us-east-1"
+aws s3 mb "s3://tf-remote-bucket-gonk" --region "us-east-1"
 
 # Create DynamoDB Table
 aws dynamodb create-table \

@@ -47,9 +47,6 @@ jobs:
   sls-deploy:
     name: "Serverless Deploy"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 'ffl'
     steps:
       - name: "Setup - Checkout"
         uses: actions/checkout@v2.1.0
@@ -62,8 +59,9 @@ jobs:
           echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
           pwd
       
-      - name: serverless deploy
+      - name: Serverless Deploy
         uses: serverless/github-action@v3
         with:
-          args: deploy
+          args: -c "cd ./ffl && serverless deploy"
+          entrypoint: /bin/sh
     needs: terraform-apply

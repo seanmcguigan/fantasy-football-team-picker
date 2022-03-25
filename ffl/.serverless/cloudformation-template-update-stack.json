@@ -181,7 +181,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ffl/dev/1644313836046-2022-02-08T09:50:36.046Z/post.zip"
+          "S3Key": "serverless/ffl/dev/1648223043238-2022-03-25T15:44:03.238Z/post.zip"
         },
         "Handler": "set.ffl",
         "Runtime": "python3.8",
@@ -190,7 +190,7 @@
         "Timeout": 90,
         "Environment": {
           "Variables": {
-            "endpoint": "cluster-ffl.337jf5.cfg.use1.cache.amazonaws.com",
+            "endpoint": "cluster-ffl.us8mgo.cfg.use1.cache.amazonaws.com",
             "port": "11211"
           }
         },
@@ -202,18 +202,18 @@
         },
         "VpcConfig": {
           "SecurityGroupIds": [
-            "sg-012b87f9cd81a4957"
+            "sg-06af7cdf97467689d"
           ],
           "SubnetIds": [
-            "subnet-0531abd024f075b53",
-            "subnet-06296930744e92b5d",
-            "subnet-0b82638f5cebb9bae"
+            "subnet-05e7ecb53772b0869",
+            "subnet-0e6e2c3435786525f",
+            "subnet-0f048a8f6e716d42e"
           ]
         },
         "Layers": [
-          "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:46",
-          "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-requests:27",
-          "arn:aws:lambda:us-east-1:650601597349:layer:pymemcache:1"
+          "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p38-pandas:1",
+          "arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p38-requests:1",
+          "arn:aws:lambda:us-east-1:827039240043:layer:pymemcache:1"
         ]
       },
       "DependsOn": [
@@ -227,7 +227,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ffl/dev/1644313836046-2022-02-08T09:50:36.046Z/poll.zip"
+          "S3Key": "serverless/ffl/dev/1648223043238-2022-03-25T15:44:03.238Z/poll.zip"
         },
         "Handler": "get.ffl",
         "Runtime": "python3.8",
@@ -236,7 +236,7 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "endpoint": "cluster-ffl.337jf5.cfg.use1.cache.amazonaws.com",
+            "endpoint": "cluster-ffl.us8mgo.cfg.use1.cache.amazonaws.com",
             "port": "11211"
           }
         },
@@ -248,33 +248,33 @@
         },
         "VpcConfig": {
           "SecurityGroupIds": [
-            "sg-012b87f9cd81a4957"
+            "sg-06af7cdf97467689d"
           ],
           "SubnetIds": [
-            "subnet-0531abd024f075b53",
-            "subnet-06296930744e92b5d",
-            "subnet-0b82638f5cebb9bae"
+            "subnet-05e7ecb53772b0869",
+            "subnet-0e6e2c3435786525f",
+            "subnet-0f048a8f6e716d42e"
           ]
         },
         "Layers": [
-          "arn:aws:lambda:us-east-1:650601597349:layer:pymemcache:1"
+          "arn:aws:lambda:us-east-1:827039240043:layer:pymemcache:1"
         ]
       },
       "DependsOn": [
         "PollLogGroup"
       ]
     },
-    "PostLambdaVersion8CS9dfLTvHrHsYwVqx2DRjvfmb1ar9dtzVcMDvM7zc": {
+    "PostLambdaVersionHeYre9pPcgYnE4S5oBH16peJncj189Dq7h99QwODgM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "PostLambdaFunction"
         },
-        "CodeSha256": "yvYcJ607yuVfsNDbOx/hsGfUly0vl/LxAH4ktXc6YoA="
+        "CodeSha256": "W3d5LST2N9iI4Y/+XnRT+KZCvs72l79ekDxm/anC9SA="
       }
     },
-    "PollLambdaVersion2YGRgJ128NxtUiqiPxSDEJDtbVCZuKu7skIhXJpEYE": {
+    "PollLambdaVersionweATkySMzuaznIR93Kjwca0oFDxln97w6ByItjEJ8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -382,7 +382,7 @@
         "PollLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1644313833823": {
+    "ApiGatewayDeployment1648223040870": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -444,7 +444,7 @@
     "PostLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PostLambdaVersion8CS9dfLTvHrHsYwVqx2DRjvfmb1ar9dtzVcMDvM7zc"
+        "Ref": "PostLambdaVersionHeYre9pPcgYnE4S5oBH16peJncj189Dq7h99QwODgM"
       },
       "Export": {
         "Name": "sls-ffl-dev-PostLambdaFunctionQualifiedArn"
@@ -453,7 +453,7 @@
     "PollLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PollLambdaVersion2YGRgJ128NxtUiqiPxSDEJDtbVCZuKu7skIhXJpEYE"
+        "Ref": "PollLambdaVersionweATkySMzuaznIR93Kjwca0oFDxln97w6ByItjEJ8"
       },
       "Export": {
         "Name": "sls-ffl-dev-PollLambdaFunctionQualifiedArn"
