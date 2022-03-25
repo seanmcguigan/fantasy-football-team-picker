@@ -36,8 +36,6 @@ jobs:
       # Marketplace: https://github.com/marketplace/actions/hashicorp-setup-terraform
       - name: "Setup - Terraform CLI"
         uses: hashicorp/setup-terraform@v1.3.2
-        # with:
-        #   terraform_version: 1.1.3
 
       # Init pulls credentials from the .aws/credentials file by default
       - name: "Run - Terraform Init"

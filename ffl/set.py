@@ -87,14 +87,11 @@ players_df['player_name'] = players_df['first_name'].str.cat(
 players_df = players_df.drop(['first_name', 'second_name'], axis=1)
 
 # Function for creating cell-values
-
-
 def unavailable(row):
     if row['news'] != '':
         return True
     else:
         return False
-
 
 # Using function to create new column:
 players_df['unavailable'] = players_df.apply(
@@ -126,7 +123,6 @@ roi_players['roi'] = roi_players.apply(
     lambda row: row.total_points / row.now_cost, axis=1)
 roi_players = roi_players.sort_values(by='roi', ascending=False)
 #print(roi_players.head())
-
 
 def choose_team():
     roi_team = []
