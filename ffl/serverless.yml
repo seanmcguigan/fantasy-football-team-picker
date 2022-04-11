@@ -5,7 +5,7 @@ variablesResolutionMode: 20210326
 
 custom:
   pymemcacheLayerArn: ${ssm:/pymemcache_layer}
-  securityGroupIds: ${ssm:/lambda_security_group}
+  lambdaSecurityGroupIds: ${ssm:/lambdas_security_group}
   subnetIds: ${ssm:/private_subnets}
   endpoint: ${ssm:/cache_endpoint}
   port: ${ssm:/cache_port}
@@ -35,7 +35,7 @@ functions:
     
     vpc:
       securityGroupIds:
-        - ${self:custom.securityGroupIds}
+        - ${self:custom.lambdaSecurityGroupIds}
       subnetIds: ${self:custom.subnetIds}
     
     environment:
@@ -59,7 +59,7 @@ functions:
     
     vpc:
       securityGroupIds:
-        - ${self:custom.securityGroupIds}
+        - ${self:custom.lambdaSecurityGroupIds}
       subnetIds: ${self:custom.subnetIds}
     
     environment:

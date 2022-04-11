@@ -37,6 +37,10 @@ jobs:
       - name: "Setup - Terraform CLI"
         uses: hashicorp/setup-terraform@v1.3.2
 
+      # Format pulls credentials from the .aws/credentials file by default
+      - name: "Run - Terraform Format"
+        run: terraform fmt -check
+
       # Init pulls credentials from the .aws/credentials file by default
       - name: "Run - Terraform Init"
         run: terraform init -input=false
