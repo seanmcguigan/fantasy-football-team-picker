@@ -1,6 +1,9 @@
 # Local .terraform directories
 **/.terraform/*
 
+# tfsec uses static analysis of your terraform code to spot potential misconfigurations.
+**/.tfsec/*
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
