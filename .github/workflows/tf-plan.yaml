@@ -34,14 +34,14 @@ jobs:
       # Static analysis of Terraform templates to spot potential security issues
       # Marketplace: https://github.com/marketplace/actions/terraform-security-scan
       - name: "Run - Security Scan"
-        id: "fmt"
+        id: fmt
         uses: triat/terraform-security-scan@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Init pulls credentials from the .aws/credentials file by default
       - name: "Run - Terraform Init"
-        id: "init"
+        id: init
         run: terraform init -input=false
 
       - name: "Run - Terraform Validate"
@@ -53,6 +53,7 @@ jobs:
       - name: "Run - Terraform Plan"
         id: plan
         run: terraform plan -input=false -no-color
+        continue-on-error: true
 
       # Submit a comment with the plan output to the pull request
       - name: "Run - Terraform Comment"
