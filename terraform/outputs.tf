@@ -533,7 +533,6 @@ output "vpc_flow_log_cloudwatch_iam_role_arn" {
   description = "The ARN of the IAM role used when pushing logs to Cloudwatch log group"
   value       = module.vpc.vpc_flow_log_cloudwatch_iam_role_arn
 }
-# lambda layer version
 output "aws_lambda_layer_version_pymemcache_layer" {
   description = "The ARN of Lambda Python pymemcache layer"
   value       = aws_lambda_layer_version.pymemcache_layer.arn
